@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct ProductModel {
+struct ProductModel: Identifiable, Hashable, Codable {
     
     let id: Int
-    let name: String
-    let rate: Double
-    let image: URL
-    let price: Double
+    let name : String
+    let rate: String
+    let image: String
+    let rub: String
+    let cop: String?
+    let oldPrice: String 
 }
