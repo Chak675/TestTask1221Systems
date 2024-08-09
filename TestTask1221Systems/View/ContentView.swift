@@ -26,7 +26,6 @@ struct ContentView: View {
                         case .grid: grid()
                     }
                 }
-                .padding(.horizontal, 16)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
@@ -37,14 +36,12 @@ struct ContentView: View {
                             Image(viewModel.state == .list ? "listBullet" : "squareGrid")
                                 .resizable()
                                 .frame(width: 20, height: 20)
-                                .padding(.all, 8)
                                 .foregroundStyle(Color(.green).opacity(0.7))
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color(.gray).opacity(0.1))
                                 )
                         }
-                        .padding(.bottom, 16)
                     }
                 }
             }
@@ -53,13 +50,13 @@ struct ContentView: View {
         .onAppear {
             Task {
                 await viewModel.fetch()
-            } 
+            }
         }
     }
     
     @ViewBuilder
     func grid() -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
+        LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 8) {
             ForEach(viewModel.products, id: \.self) { item in
                 VStack(spacing: 8) {
                     Image(item.image)
@@ -70,38 +67,45 @@ struct ContentView: View {
                         Image("star")
                             .resizable()
                             .frame(width: 16, height: 16)
-                            .foregroundStyle(Color(red: 250, green: 214, blue: 86))
-                    
+                            .foregroundStyle(Color(
+                                red: 250,
+                                green: 214,
+                                blue: 86)
+                            )
+                        
                         Text(item.rate)
                     }
-                    .padding()
+                    .padding(4)
                     .frame(maxWidth: .infinity, maxHeight: 20, alignment: .leading)
                     
                     Text(item.name)
                         .padding(.all, 8)
                     
-                    HStack(spacing: 2) {
-                        Text(item.rub)
-                            .font(.system(size: 22).bold())
-                        
-                        item.cop.flatMap {
-                            Text($0)
-                                .font(.system(size: 16).bold())
-                                .frame(height: 22, alignment: .top)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack(spacing: 2) {
+                                Text(item.rub)
+                                    .font(.system(size: 22).bold())
+                                
+                                item.cop.flatMap {
+                                    Text($0)
+                                        .font(.system(size: 16).bold())
+                                        .frame(height: 22, alignment: .top)
+                                }
+                                
+                                Image("perAmountIcon")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                            }
+                            
+                            Text(item.oldPrice)
+                                .font(.system(size: 12))
+                                .foregroundStyle(Color(.systemGray))
+                                .strikethrough(true)
                         }
-                       
-                        Image("perAmountIcon")
-                            .resizable()
-                            .frame(width: 20, height: 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Spacer()
-                        
-                        // разместить по дизайну
-                        Text(item.oldPrice)
-                            .font(.system(size: 12))
-                            .foregroundStyle(Color(.systemGray))
-                            .strikethrough(true)
-                        
                         
                         Button {
                             viewModel.shoppingListPress()
@@ -117,18 +121,16 @@ struct ContentView: View {
                                         .fill(Color(.systemGreen))
                                 )
                         }
-                        .padding(.bottom, 10)
                     }
                     .padding(.all, 4)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .frame(maxWidth: 168, maxHeight: 278, alignment: .leading)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color(.white)))
             }
-            .padding(8)
         }
+        .padding(8)
     }
     
     @ViewBuilder
@@ -155,25 +157,35 @@ struct ContentView: View {
                             Text("| 19 отзывов")
                                 .foregroundStyle(.gray)
                         }
-                        .frame(width: 107, height: 20)
                         .font(.system(size: 10))
                         
                         Text("\(item.name)")
                             .font(.system(size: 16))
                         
-                        HStack(spacing: 2) {
-                            Text(item.rub)
-                                .font(.system(size: 22).bold())
-                            
-                            item.cop.flatMap {
-                                Text($0)
-                                    .font(.system(size: 16).bold())
-                                    .frame(height: 22, alignment: .top)
+                        Spacer()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                HStack(spacing: 2) {
+                                    Text(item.rub)
+                                        .font(.system(size: 22).bold())
+                                    
+                                    item.cop.flatMap {
+                                        Text($0)
+                                            .font(.system(size: 16).bold())
+                                            .frame(height: 22, alignment: .top)
+                                    }
+                                    
+                                    Image("perAmountIcon")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                }
+                                
+                                Text(item.oldPrice)
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(Color(.systemGray))
+                                    .strikethrough(true)
                             }
-                           
-                            Image("perAmountIcon")
-                                .resizable()
-                                .frame(width: 20, height: 20)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Spacer()
                             
@@ -192,11 +204,9 @@ struct ContentView: View {
                                     )
                             }
                         }
-                        .frame(maxHeight: .infinity, alignment: .bottom)
+                        .padding(.all, 4)
                     }
-                    .frame(maxWidth: 199, maxHeight: 144)
                 }
-                .frame(maxWidth: 375, maxHeight: 176, alignment: .leading)
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 .background(RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.white))
