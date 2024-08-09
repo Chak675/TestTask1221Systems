@@ -9,26 +9,26 @@
 /* Begin PBXBuildFile section */
 		184F25C72C639432001783BB /* TestTask1221SystemsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25C62C639432001783BB /* TestTask1221SystemsApp.swift */; };
 		184F25C92C639432001783BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25C82C639432001783BB /* ContentView.swift */; };
-		184F25CB2C639433001783BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184F25CA2C639433001783BB /* Assets.xcassets */; };
 		184F25CE2C639433001783BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184F25CD2C639433001783BB /* Preview Assets.xcassets */; };
 		184F25D62C6396C5001783BB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25D52C6396C5001783BB /* ProductModel.swift */; };
 		184F25DB2C63F577001783BB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25DA2C63F577001783BB /* ContentViewModel.swift */; };
 		184F25E42C65060F001783BB /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25E32C65060F001783BB /* FetchService.swift */; };
 		184F25E82C6508A4001783BB /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25E72C6508A4001783BB /* FetchError.swift */; };
 		184F25EA2C653E68001783BB /* Server.json in Resources */ = {isa = PBXBuildFile; fileRef = 184F25E52C6506B7001783BB /* Server.json */; };
+		18C768292C66AAB500F097DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C768282C66AAB500F097DF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		184F25C32C639432001783BB /* TestTask1221Systems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask1221Systems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184F25C62C639432001783BB /* TestTask1221SystemsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask1221SystemsApp.swift; sourceTree = "<group>"; };
 		184F25C82C639432001783BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		184F25CA2C639433001783BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		184F25CD2C639433001783BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		184F25D52C6396C5001783BB /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		184F25DA2C63F577001783BB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		184F25E32C65060F001783BB /* FetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchService.swift; sourceTree = "<group>"; };
 		184F25E52C6506B7001783BB /* Server.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Server.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		184F25E72C6508A4001783BB /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
+		18C768282C66AAB500F097DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +61,12 @@
 		184F25C52C639432001783BB /* TestTask1221Systems */ = {
 			isa = PBXGroup;
 			children = (
+				18C768282C66AAB500F097DF /* Assets.xcassets */,
 				184F25C62C639432001783BB /* TestTask1221SystemsApp.swift */,
 				184F25E22C640D30001783BB /* View */,
 				184F25E92C653948001783BB /* MockData */,
 				184F25D72C639C71001783BB /* Service */,
 				184F25D42C639684001783BB /* Models */,
-				184F25CA2C639433001783BB /* Assets.xcassets */,
 				184F25CC2C639433001783BB /* Preview Content */,
 			);
 			path = TestTask1221Systems;
@@ -172,9 +172,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C768292C66AAB500F097DF /* Assets.xcassets in Resources */,
 				184F25EA2C653E68001783BB /* Server.json in Resources */,
 				184F25CE2C639433001783BB /* Preview Assets.xcassets in Resources */,
-				184F25CB2C639433001783BB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +339,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.TestTask1221Systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -368,9 +372,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.TestTask1221Systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
