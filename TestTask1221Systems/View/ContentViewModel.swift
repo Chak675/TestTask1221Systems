@@ -22,7 +22,6 @@ class ContentViewModel: ObservableObject {
     }
     
     @Published var state: PresentationState = .grid
-    
     @Published var products = [ProductModel]()
     @Published var isLoading = false
     
