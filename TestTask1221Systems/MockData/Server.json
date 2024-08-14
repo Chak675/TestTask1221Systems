@@ -6,7 +6,12 @@
         "image": "cucumber",
         "rub": "99",
         "cop": "99",
-        "oldPrice": "199,0"
+        "oldPrice": "199,0",
+        "country": null,
+        "tag": {
+            "name": "Цена по карте",
+            "color": "#5BCD7B"
+        }
     },
     {
         "id": 2,
@@ -15,7 +20,12 @@
         "image": "pork",
         "rub": "450",
         "cop": null,
-        "oldPrice": "199,0"
+        "oldPrice": "199,0",
+        "country": null,
+        "tag": {
+            "name": "Удар по ценам",
+            "color": "#FC6A6F"
+        }
     },
     {
         "id": 3,
@@ -24,6 +34,7 @@
         "image": "apple",
         "rub": "120",
         "cop": "90",
-        "oldPrice": "199,0"
+        "oldPrice": "199,0",
+        "country": "Франция 🇫🇷"
     }
 ]

@@ -16,4 +16,12 @@ struct ProductModel: Identifiable, Hashable, Codable {
     let rub: String
     let cop: String?
     let oldPrice: String 
+    let country: String?  
+    let tag: Tag?
+}
+
+struct Tag: Codable, Hashable {
+    
+    let name: String
+    let color: String
 }
