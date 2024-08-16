@@ -46,4 +46,8 @@ class ContentViewModel: ObservableObject {
     func favoritePress() {
         print(#function)
     }
+    
+    func cartPress() {
+        print(#function)
+    }
 }
