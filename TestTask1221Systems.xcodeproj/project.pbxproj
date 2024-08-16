@@ -16,6 +16,7 @@
 		184F25E82C6508A4001783BB /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F25E72C6508A4001783BB /* FetchError.swift */; };
 		184F25EA2C653E68001783BB /* Server.json in Resources */ = {isa = PBXBuildFile; fileRef = 184F25E52C6506B7001783BB /* Server.json */; };
 		18C768292C66AAB500F097DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C768282C66AAB500F097DF /* Assets.xcassets */; };
+		18EDC43B2C6CE9DB003CFDDE /* HexCollor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDC43A2C6CE9DB003CFDDE /* HexCollor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		184F25E52C6506B7001783BB /* Server.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Server.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		184F25E72C6508A4001783BB /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		18C768282C66AAB500F097DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18EDC43A2C6CE9DB003CFDDE /* HexCollor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexCollor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		184F25C52C639432001783BB /* TestTask1221Systems */ = {
 			isa = PBXGroup;
 			children = (
+				18EDC43A2C6CE9DB003CFDDE /* HexCollor.swift */,
 				18C768282C66AAB500F097DF /* Assets.xcassets */,
 				184F25C62C639432001783BB /* TestTask1221SystemsApp.swift */,
 				184F25E22C640D30001783BB /* View */,
@@ -187,6 +190,7 @@
 			files = (
 				184F25C92C639432001783BB /* ContentView.swift in Sources */,
 				184F25D62C6396C5001783BB /* ProductModel.swift in Sources */,
+				18EDC43B2C6CE9DB003CFDDE /* HexCollor.swift in Sources */,
 				184F25C72C639432001783BB /* TestTask1221SystemsApp.swift in Sources */,
 				184F25E42C65060F001783BB /* FetchService.swift in Sources */,
 				184F25DB2C63F577001783BB /* ContentViewModel.swift in Sources */,
