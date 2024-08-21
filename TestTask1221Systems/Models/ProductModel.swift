@@ -18,6 +18,7 @@ struct ProductModel: Identifiable, Hashable, Codable {
     let oldPrice: String 
     let country: String?  
     let tag: Tag?
+    let sale: String? 
 }
 
 struct Tag: Codable, Hashable {
