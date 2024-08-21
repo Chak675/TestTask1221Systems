@@ -56,39 +56,96 @@ struct ContentView: View {
     
     @ViewBuilder
     func grid() -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 8) {
+        LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
             ForEach(viewModel.products, id: \.self) { item in
-                VStack(spacing: 8) {
-                    
+                VStack(alignment: .leading) {
                     Image(item.image)
                         .resizable()
-                        .frame(width: 168, height: 168)
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(alignment: .topLeading) {
+                            VStack(alignment: .leading) {
+                                //                                // tag and button
+                                HStack(alignment: .top) {
+                                    Text(item.tag?.name ?? "")
+                                        .padding(.all, 6)
+                                        .font(.system(size: 10))
+                                        .background(
+                                            UnevenRoundedRectangle(
+                                                topLeadingRadius: .zero,
+                                                bottomLeadingRadius: .zero,
+                                                bottomTrailingRadius: 6,
+                                                topTrailingRadius: 6
+                                            )
+                                            .fill(Color(hex: item.tag?.color ?? "#FFFFFF"))
+                                        )
+                                    
+                                    Spacer()
+                                    
+                                    VStack {
+                                        Button {
+                                            viewModel.favoritePress()
+                                        } label: {
+                                            Image("favorite")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                                .foregroundStyle(.black)
+                                                .padding(8)
+                                        }
+                                        
+                                        Button {
+                                            viewModel.shoppingListPress()
+                                        } label: {
+                                            Image("shoppingList")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                                .foregroundStyle(.black)
+                                                .padding(8)
+                                        }
+                                    }
+                                    .background(.white.opacity(0.8))
+                                    .clipShape(
+                                        UnevenRoundedRectangle(
+                                            topLeadingRadius: .zero,
+                                            bottomLeadingRadius: 9,
+                                            bottomTrailingRadius: .zero,
+                                            topTrailingRadius: .zero,
+                                            style: .continuous
+                                        )
+                                    )
+                                }
+                                
+                                Spacer()
+                                
+                                HStack {
+                                    Image("star")
+                                        .resizable()
+                                        .frame(width: 16, height: 16)
+                                        .foregroundStyle(Color(hex: "#FAD656"))
+                                    
+                                    Text(item.rate)
+                                    
+                                    item.sale.flatMap {
+                                        Text($0)
+                                            .font(.system(size: 20).bold())
+                                            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                                            .foregroundStyle(Color(hex: "#C32323"))
+                                    }
+                                }
+                                .padding(4)
+                            }
+                        }
                     
-                    HStack {
-                        Image("star")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                            .foregroundStyle(Color(
-                                red: 250,
-                                green: 214,
-                                blue: 86)
-                            )
+                    VStack(spacing: 6) {
+                        Text(item.name)
                         
-                        Text(item.rate)
+                        item.country.flatMap {
+                            Text($0)
+                                .font(.system(size: 14))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color(.systemGray))
+                        }
                     }
-                    .padding(4)
-                    .frame(maxWidth: .infinity, maxHeight: 20, alignment: .bottomLeading)
-                    
-                    Text(item.name)
-                        .padding(.all, 8)
-                    
-                    item.country.flatMap {
-                        Text($0)
-                            .font(.system(size: 14))
-                            .padding(8)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color(.systemGray))
-                    }
+                    .padding(8)
                     
                     HStack {
                         VStack(alignment: .leading) {
@@ -129,55 +186,11 @@ struct ContentView: View {
                                 )
                         }
                     }
-                    .padding(.all, 4)
+                    .padding(.all, 8)
                 }
-                .overlay(alignment: .topLeading) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(item.tag?.name ?? "")
-                                .frame(minWidth: 0, idealWidth: 100, alignment: .leading)
-                                .font(.system(size: 10))
-                                .padding(.all, 6)
-                                .background(
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 6,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 6,
-                                        topTrailingRadius: 6,
-                                        style: .continuous
-                                    )
-                                    .fill(Color(hex: item.tag?.color ?? "#FFFFFF"))
-                                )
-                        }
-                        
-                        VStack {
-                            Button {
-                                viewModel.favoritePress()
-                            } label: {
-                                Image("favorite")
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                                    .foregroundStyle(.black)
-                                    .padding(8)
-                            }
-                            
-                            Button {
-                                viewModel.shoppingListPress()
-                            } label: {
-                                Image("shoppingList")
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                                    .foregroundStyle(.black)
-                                    .padding(8)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .topTrailing)
-                    }
-                }
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.white)))
         }
         .padding(8)
     }
@@ -195,11 +208,7 @@ struct ContentView: View {
                             Image("star")
                                 .resizable()
                                 .frame(width: 16, height: 16, alignment: .leading)
-                                .foregroundStyle(Color(
-                                    red: 250,
-                                    green: 214,
-                                    blue: 86)
-                                )
+                                .foregroundStyle(Color(hex: "#FAD656"))
                             
                             Text(item.rate)
                             
@@ -308,6 +317,15 @@ struct ContentView: View {
                                     )
                                     .fill(Color(hex: item.tag?.color ?? "#FFFFFF"))
                                 )
+                        }
+                        
+                        Spacer()
+                        
+                        item.sale.flatMap {
+                            Text($0)
+                                .font(.system(size: 20).bold())
+                                .frame(maxWidth: 146, alignment: .bottomTrailing)
+                                .foregroundStyle(Color(hex: "#C32323"))
                         }
                     }
                 }
